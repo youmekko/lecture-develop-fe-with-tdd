@@ -14,7 +14,10 @@ describe('App.ClickCountView', ()=> {
   })
   
   it('updateElement를 주입하지 않으면 에러를 던진다', ()=>{
-    
+    const clickCounter = App.ClickCounter()
+    const updateElement = null
+    const actual = () => App.ClickCountView(clickCounter, updateElement)
+    expect(actual).toThrowError()
   })
   
   describe('updateView()', ()=> {
