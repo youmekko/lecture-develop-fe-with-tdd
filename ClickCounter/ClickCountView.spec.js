@@ -20,7 +20,6 @@ describe('App.ClickCountView 모듈', () => {
     clickCounter = App.ClickCounter(); 
     view = App.ClickCountView(clickCounter, updateEl)
   })
-  
 
   describe('updateView()', () => {
     it('ClickCounter의 getValue() 실행결과를 출력한다', ()=> {
@@ -32,11 +31,15 @@ describe('App.ClickCountView 모듈', () => {
 
   describe('increaseAndUpdateView()는', ()=> {
     it('ClickCounter의 increase 를 실행한다', ()=> {
-      // todo
+      spyOn(clickCounter, 'increase')
+      view.increaseAndUpdateView()
+      expect(clickCounter.increase).toHaveBeenCalled()
     })
     
     it('updateView를 실행한다', ()=> {
-      // todo 
+      spyOn(view, 'updateView')
+      view.increaseAndUpdateView()
+      expect(view.updateView).toHaveBeenCalled()
     })
   })
 })
