@@ -25,7 +25,16 @@ describe('App.ClickCounter', ()=> {
 
   describe('setCountFn()', () => {
     it('인자로 함수를 넘기면 count()를 대체한다', () => {
-      // todo 
+      const add2 = value => value + 2
+      const expected = add2(data.value)
+      /*
+      setCountFc() 직후에 count() 함수를 체이닝 해준 것을 눈여겨 볼 필요가 있다.
+      실제 구현 할 때도 이렇게 체이닝 할 수 있게 해주면 코드를 사용 할 수 있는 측면에서도 간단하게 코딩 할 수 있다.
+      */
+      counter.setCountFn(add2).count()
+
+      const actual = counter.getValue()
+      expect(actual).toBe(expected);
     })
   })
 })
